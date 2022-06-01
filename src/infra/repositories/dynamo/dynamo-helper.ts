@@ -5,7 +5,9 @@ export const dynamoHelper = {
   client: null as unknown as DynamoDBDocumentClient,
   connect(): void {
     const client = new DynamoDBClient({})
-    const documentClient = DynamoDBDocumentClient.from(client, { marshallOptions: { removeUndefinedValues: true }})
+    const documentClient = DynamoDBDocumentClient.from(client, {
+      marshallOptions: { removeUndefinedValues: true }
+    })
     this.client = documentClient
   },
   getClient(): DynamoDBDocumentClient {

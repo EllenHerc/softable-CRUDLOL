@@ -9,7 +9,7 @@
     "rootDirs": ["src", "tests"],
     "baseUrl": "src",
     "types": ["node"],
-    "paths": {}
+    "paths": {},
   },
   "include": ["src", "aws"],
   "exclude": ["node_modules", "cdk.out"]
