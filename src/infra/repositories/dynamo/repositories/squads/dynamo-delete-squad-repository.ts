@@ -1,5 +1,5 @@
-import { DeleteItemCommand } from '@aws-sdk/client-dynamodb'
 import {
+  DeleteCommand,
   DeleteCommandInput,
   DynamoDBDocumentClient
 } from '@aws-sdk/lib-dynamodb'
@@ -21,7 +21,7 @@ export class DynamoDeleteSquadRepository implements DeleteSquadRepository {
     }
     let response: boolean = false
     try {
-      const responseDB = await this.client.send(new DeleteItemCommand(params))
+      const responseDB = await this.client.send(new DeleteCommand(params))
       console.log('Success - squad deleted!! ' + responseDB)
       response = true
     } catch (err) {

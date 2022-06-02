@@ -14,5 +14,6 @@ export const adaptAPIGatewayProxyEventV2Route = async (
     queryStringParameters: undefined
   }
   const httpResponse = await controller.handle(httpRequest)
+  console.log('httpResponse: ', httpResponse)
   return httpResponse as APIGatewayProxyResultV2
 }

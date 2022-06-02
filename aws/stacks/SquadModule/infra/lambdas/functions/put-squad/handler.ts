@@ -1,6 +1,6 @@
 import { APIGatewayProxyResultV2, APIGatewayProxyEventV2 } from 'aws-lambda'
 import { adaptAPIGatewayProxyEventV2Route } from 'infra/adapters/aws-api-gateway-proxy-event-v2-adapter'
-import { makePostSquadController } from 'main/factories/controllers/squads/post-squad-controller-factory'
+import { makePutSquadController } from 'main/factories/controllers/squads/put-squad-controller-factory'
 
 export async function handler(
   event: APIGatewayProxyEventV2
@@ -8,7 +8,7 @@ export async function handler(
   console.log('event: ', JSON.stringify(event))
   const response = await adaptAPIGatewayProxyEventV2Route(
     event,
-    makePostSquadController()
+    makePutSquadController()
   )
   return response
 }

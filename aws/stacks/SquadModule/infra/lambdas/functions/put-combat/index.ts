@@ -9,6 +9,7 @@ import {
   ParameterType,
   StringParameter
 } from 'aws-cdk-lib/aws-ssm'
+import { Table } from 'aws-cdk-lib/aws-dynamodb'
 
 export function makeCombatsSquadsPutCombatLambda(app: Construct) {
   const resource = new NodejsFunction(app, 'SquadModuleLambdaPutCombat', {
@@ -19,6 +20,12 @@ export function makeCombatsSquadsPutCombatLambda(app: Construct) {
     logRetention: RetentionDays.SIX_MONTHS,
     timeout: Duration.seconds(15)
   })
+
+  const tableSquads = Table.fromTableName(app, 'squadsTableUpdate', 'squads')
+  tableSquads.grantReadWriteData(resource)
+
+  const tableCombats = Table.fromTableName(app, 'combatsTable', 'combats')
+  tableCombats.grantWriteData(resource)
 
   const stringParameter =
     'SquadModule.SquadModuleLambdas.infra.lambdas.functions.put-combat'

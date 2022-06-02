@@ -46,9 +46,9 @@ export const forbidden = (error: Error): HttpResponse => ({
   }
 })
 
-export const notFound = (): HttpResponse => ({
+export const notFound = (msg: string = null): HttpResponse => ({
   statusCode: 404,
-  body: null,
+  body: msg,
   headers: {
     'Access-Control-Allow-Origin': '*'
   }

@@ -4,5 +4,5 @@ export interface Squad {
   name: String
   createdAt: String
   members: Array<String>
-  score: Number
+  score: number
 }
